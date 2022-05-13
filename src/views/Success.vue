@@ -42,7 +42,7 @@ export default {
     }),
   },
   methods: {
-    //if payment successful we change the status of order to Payment Successful in firebase
+    //if payment is successful then change the status of order to Payment Successful in firebase
     async getSpecifiedDoc(user_uid) {
       const q = query(
         collection(db, `users/${user_uid}/orders`),
@@ -51,7 +51,7 @@ export default {
       );
       const querySnap = await getDocs(q);
 
-      //We update the status of payment
+      //update the status of payment
       querySnap.forEach(async (docs) => {
         let id_order = "OrderNum_" + docs.data().numberOrder;
         await updateDoc(doc(db, `users/${user_uid}/orders/${id_order}`), {
@@ -72,7 +72,7 @@ export default {
       }, 1500);
     }
 
-    //After payment is done we clear the cart
+    //After the payment is done clear the cart
     this.$store.dispatch("clearCart").then(() => {
       let user_uid = localStorage.getItem("user_uid");
       if (user_uid) {

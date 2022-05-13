@@ -213,7 +213,7 @@ export default {
     };
   },
   methods: {
-    //change picture when client changes the flavour of product
+    //change picture when user changes the flavour of product
     handleChange(val) {
       this.flavour = val;
       let image = this.flavours.find((item) => item.name == val).image;
@@ -236,7 +236,7 @@ export default {
         });
       }
     },
-    //Add product to the cart of authenticated user
+    //add product to the cart of authenticated user
     addItem() {
       if (this.userInfo) {
         if (this.flavour != "Select Flavour") {
@@ -280,7 +280,7 @@ export default {
     multiPayment() {
       return this.discounts.sort((a, b) => b.discount - a.discount);
     },
-    //Calculate the final price
+    //calculate the final price
     getFinalPrice() {
       let finalPrice = this.product.price;
       this.discounts.forEach((element) => {
@@ -314,7 +314,7 @@ export default {
     });
   },
   created() {
-    //Get all products from firebase
+    //get all products from firebase
     this.$store.dispatch("getProducts").then(() => {
       this.product = this.products.find(
         (product) => product.id == this.$route.params.id

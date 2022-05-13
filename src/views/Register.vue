@@ -193,7 +193,7 @@ export default {
         });
       }
     },
-    //To add a new user in firebase
+    //add a new user in firebase
     async addUser() {
       let infos = {
         firstName: this.formState.firstName,

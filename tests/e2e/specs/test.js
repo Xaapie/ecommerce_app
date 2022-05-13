@@ -1,6 +1,8 @@
 // https://docs.cypress.io/api/introduction/api.html
 
-//  5 e2e tests done
+//5 e2e tests done
+
+//tests login page
 describe("Login Page", () => {
   it("Check display of login form", () => {
     cy.visit("/login");
@@ -8,6 +10,7 @@ describe("Login Page", () => {
   });
 });
 
+//tests register page
 describe("Register Page", () => {
   it("Check display of register form", () => {
     cy.visit("/register");
@@ -15,6 +18,7 @@ describe("Register Page", () => {
   });
 });
 
+//tests page not found
 describe("Not Found Page", () => {
   it("Check display of 404 page", () => {
     cy.visit("/notfound");
@@ -22,6 +26,7 @@ describe("Not Found Page", () => {
   });
 });
 
+//tests product page for not selecting a flavour
 describe("Product Details", () => {
   it("Check if user don't choose flavour then display error", () => {
     cy.visit("/product-details/azQWsJYmSql830dqZsGs");
@@ -30,6 +35,7 @@ describe("Product Details", () => {
   });
 });
 
+//tests to see if products show for clients
 describe("Shop Page", () => {
   it("Check if products displayed for the client", () => {
     cy.visit("/shop");

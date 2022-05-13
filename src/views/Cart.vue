@@ -165,7 +165,7 @@ export default {
       }
     },
 
-    //we calculate the subTotal
+    //calculate the subtotal
     subTotal() {
       let subTotal = 0;
       if (this.cart.length > 0) {
@@ -180,7 +180,7 @@ export default {
     redirect() {
       this.$router.push("/shop");
     },
-    //Get the number of orders
+    //get the number of orders
     async getOrdersNumber() {
       let number = 1;
       const q = query(collection(db, `users/${auth.currentUser.uid}/orders`));
@@ -191,7 +191,7 @@ export default {
 
       return number;
     },
-    //to submit the cart and go to the payment page
+    //then submit the cart and go to the payment page
     async submit() {
       localStorage.setItem("status", true);
       localStorage.setItem("waiting", true);
@@ -233,7 +233,7 @@ export default {
       this.$router.push("/payment-waiting");
     },
 
-    //after makes changes in products, we update the lineItems of stripe
+    //update cart
     updateLineItems(data) {
       let item = this.lineItems.find((item) => item.price == data.old_price_id);
       if (item) {
