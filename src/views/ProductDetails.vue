@@ -347,6 +347,16 @@ export default {
 #carouselExampleControls {
   width: 25% !important;
 }
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: #dc3545;
+  background-size: 100% 100%;
+}
+
 .ant-input-number-group-wrapper {
   width: 100% !important;
 }
