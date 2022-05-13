@@ -13,16 +13,57 @@
                 </div>
               </div>
               <div class="preview-thumbnail nav nav-tabs">
-                <carousel :settings="settings">
-                  <slide v-for="flav in flavours" :key="flav.name" @click="changeImage(flav.image, flav.name)">
-                    <img :src="flav.image" />
-                  </slide>
-
-                  <template #addons>
-                    <navigation />
-                    <pagination />
-                  </template>
-                </carousel>
+                <div
+                  id="carouselExampleControls"
+                  class="carousel slide"
+                  data-ride="carousel"
+                >
+                  <div class="carousel-inner" v-if="flavours">
+                    <div class="carousel-item active">
+                      <img
+                        class="d-block w-100"
+                        :src="flavours[0]?.image"
+                        alt="First slide"
+                      />
+                    </div>
+                    <div
+                      class="carousel-item"
+                      v-for="flav in flavours.slice(1, flavours.length)"
+                      :key="flav.name"
+                      @click="changeImage(flav.image, flav.name)"
+                    >
+                      <img
+                        class="d-block w-100"
+                        :src="flav.image"
+                        alt="First slide"
+                      />
+                    </div>
+                  </div>
+                  <a
+                    class="carousel-control-prev"
+                    href="#carouselExampleControls"
+                    role="button"
+                    data-slide="prev"
+                  >
+                    <span
+                      class="carousel-control-prev-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a
+                    class="carousel-control-next"
+                    href="#carouselExampleControls"
+                    role="button"
+                    data-slide="next"
+                  >
+                    <span
+                      class="carousel-control-next-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </div>
               </div>
             </div>
             <div class="details col-md-6">
@@ -67,7 +108,7 @@
                 Flavour:
                 <a-select
                   v-model:value="flavour"
-                  style="width: 100%; marginTop: 10px"
+                  style="width: 100%; margintop: 10px"
                   @change="handleChange"
                 >
                   <a-select-option
@@ -110,12 +151,8 @@
             <a-tab-pane key="1" tab="Flavours"
               ><InfoFlavours :flavours="flavours"
             /></a-tab-pane>
-            <a-tab-pane
-              key="2"
-              tab="Additional information"
-              force-render
-            >
-            <AdditionalInformation :name="additInfo" />
+            <a-tab-pane key="2" tab="Additional information" force-render>
+              <AdditionalInformation :name="additInfo" />
             </a-tab-pane>
             <a-tab-pane key="3" tab="Reviews (0)"></a-tab-pane>
           </a-tabs>
@@ -152,7 +189,7 @@ export default {
     Pagination,
     Navigation,
     RelatedProducts,
-    AdditionalInformation
+    AdditionalInformation,
   },
   data() {
     return {
@@ -162,16 +199,16 @@ export default {
       discounts: [],
       flavours: [],
       mainImage: "",
-      additInfo: '',
+      additInfo: "",
       activeKey: "1",
       flavourChoose: true,
       settings: {
         itemsToShow: 5,
-        snapAlign: 'start',
+        snapAlign: "start",
         wrapAround: true,
         transition: 300,
         modelValue: 0,
-        itemsToScroll: 1
+        itemsToScroll: 1,
       },
     };
   },
@@ -282,16 +319,16 @@ export default {
       this.product = this.products.find(
         (product) => product.id == this.$route.params.id
       );
-      let name = this.product.name
-      console.log(name)
-      if(name.includes('Geek Bar')){
-        this.additInfo = "Geek Bar"
-      }else if(name.includes('IVG Bar')){
-        this.additInfo = "IVG Bar"
-      }else if(name.includes('Frunk Bar')){
-        this.additInfo = "Frunk Bar"
-      }else if(name.includes('ELF Bar')){
-        this.additInfo = "ELF Bar"
+      let name = this.product.name;
+      console.log(name);
+      if (name.includes("Geek Bar")) {
+        this.additInfo = "Geek Bar";
+      } else if (name.includes("IVG Bar")) {
+        this.additInfo = "IVG Bar";
+      } else if (name.includes("Frunk Bar")) {
+        this.additInfo = "Frunk Bar";
+      } else if (name.includes("ELF Bar")) {
+        this.additInfo = "ELF Bar";
       }
       this.mainImage = this.product.image;
       this.$store.dispatch("getFlavours", this.product.id).then((resp) => {
@@ -307,7 +344,10 @@ export default {
 };
 </script>
 <style scoped>
-.ant-input-number-group-wrapper{
+#carouselExampleControls {
+  width: 25% !important;
+}
+.ant-input-number-group-wrapper {
   width: 100% !important;
 }
 .example {
@@ -321,13 +361,16 @@ export default {
   cursor: pointer;
 }
 
-#mainProduct{
+#mainProduct {
   width: 70%;
 }
 
 @media screen and (max-width: 996px) {
-  #mainProduct{
+  #mainProduct {
     width: 100%;
+  }
+  #carouselExampleControls {
+    width: 50% !important;
   }
 }
 
@@ -492,10 +535,10 @@ img {
   margin: 0;
 }
 
-.carousel{
+.carousel {
   width: 100% !important;
 }
-.carousel__pagination{
+.carousel__pagination {
   display: none;
 }
 .product-title,
