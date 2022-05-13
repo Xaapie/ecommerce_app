@@ -44,10 +44,9 @@
       <div class="col-md-12 space">
         <p class="title">Replacement Or Refunds</p>
         <p>
-          We will send you a replacement product or refund the card
-          account you used to pay for your order. You should receive your refund
-          within five days of the reported issue, although in most cases, it
-          will be sooner.
+          We will send you a replacement product or refund the card account you
+          used to pay for your order. You should receive your refund within five
+          days of the reported issue, although in most cases, it will be sooner.
         </p>
       </div>
       <div class="col-md-12 space">
