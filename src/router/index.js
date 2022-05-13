@@ -1,221 +1,220 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
-import Login from '../views/Login.vue'
-import Register from '../views/Register.vue'
-import NotFound from '../views/NotFound.vue'
-import { auth } from '../firebase'
-import store from '../store/index'
+import { createRouter, createWebHistory } from "vue-router";
+import Home from "../views/Home.vue";
+import Login from "../views/Login.vue";
+import Register from "../views/Register.vue";
+import NotFound from "../views/NotFound.vue";
+import { auth } from "../firebase";
+import store from "../store/index";
 
-//routes to different pages 
+//routes to different pages
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: "/",
+    name: "Home",
+    component: Home,
   },
   {
-    path: '/login',
-    name: 'Login',
+    path: "/login",
+    name: "Login",
     component: Login,
     beforeEnter: (to, from, next) => {
-      if(auth.currentUser){
-        if(auth.currentUser.emailVerified){
-          next('/')
+      if (auth.currentUser) {
+        if (auth.currentUser.emailVerified) {
+          next("/");
         }
       }
-      next()
-    }
+      next();
+    },
   },
   {
-    path: '/register',
-    name: 'Register',
+    path: "/register",
+    name: "Register",
     component: Register,
     beforeEnter: (to, from, next) => {
-      if(store.state.auth.user){
-        if(store.state.auth.user.emailVerified){
-          next('/')
+      if (store.state.auth.user) {
+        if (store.state.auth.user.emailVerified) {
+          next("/");
         }
       }
-      next()
-    }
+      next();
+    },
   },
   {
-    path: '/shop/:id?',
-    name: 'Shop',
-    component: () => import('../views/Shop.vue'),
+    path: "/shop/:id?",
+    name: "Shop",
+    component: () => import("../views/Shop.vue"),
     params: true,
   },
   {
-    path:'/product-details/:id',
-    name: 'ProductDetails',
-    component: () => import('../views/ProductDetails.vue'),
+    path: "/product-details/:id",
+    name: "ProductDetails",
+    component: () => import("../views/ProductDetails.vue"),
     params: true,
   },
   {
-    path:'/cart',
-    name: 'Cart',
-    component: () => import('../views/Cart.vue'),
+    path: "/cart",
+    name: "Cart",
+    component: () => import("../views/Cart.vue"),
     beforeEnter: (to, from, next) => {
-      if(auth.currentUser){
-        if(auth.currentUser.emailVerified){
-          next()
+      if (auth.currentUser) {
+        if (auth.currentUser.emailVerified) {
+          next();
         }
       }
-      next('/')
-    }
+      next("/");
+    },
   },
   {
     path: "/:catchAll(.*)",
-    name: 'NotFound',
-    component: NotFound
+    name: "NotFound",
+    component: NotFound,
   },
   {
-    path: '/about-us',
-    name: 'AboutUs',
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutUs.vue'),
+    path: "/about-us",
+    name: "AboutUs",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/AboutUs.vue"),
   },
   {
-    path: '/terms-conditions',
-    name: 'TermsConditions',
-    component: () => import(/* webpackChunkName: "about" */ '../views/TermsConditions.vue'),
+    path: "/terms-conditions",
+    name: "TermsConditions",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/TermsConditions.vue"),
   },
   {
-    path: '/success',
-    name: 'Success',
-    component: () => import('../views/Success.vue'),
+    path: "/success",
+    name: "Success",
+    component: () => import("../views/Success.vue"),
     beforeEnter: (to, from, next) => {
-      if(!localStorage.getItem('status')){
-        next('/')
+      if (!localStorage.getItem("status")) {
+        next("/");
       }
-      next()
-    }
+      next();
+    },
   },
   {
-    path: '/failed',
-    name: 'Failed',
-    component: () => import('../views/Failed.vue'),
+    path: "/failed",
+    name: "Failed",
+    component: () => import("../views/Failed.vue"),
     beforeEnter: (to, from, next) => {
-      if(!localStorage.getItem('status')){
-        next('/')
+      if (!localStorage.getItem("status")) {
+        next("/");
       }
-      next()
-    }
+      next();
+    },
   },
   {
-    path:'/disposables',
-    name:'Disposables',
-    component: () => import('../views/Disposables.vue')
+    path: "/disposables",
+    name: "Disposables",
+    component: () => import("../views/Disposables.vue"),
   },
   {
-    path:'/delivery-information',
-    name:'DeliveryInformation',
-    component: () => import('../views/DeliveryInformation.vue')
+    path: "/delivery-information",
+    name: "DeliveryInformation",
+    component: () => import("../views/DeliveryInformation.vue"),
   },
   {
-    path:'/wholesale',
-    name:'Wholesale',
-    component: () => import('../views/Wholesale.vue')
+    path: "/wholesale",
+    name: "Wholesale",
+    component: () => import("../views/Wholesale.vue"),
   },
   {
-    path:'/return-policy',
-    name:'Policy',
-    component: () => import('../views/Policy.vue')
+    path: "/return-policy",
+    name: "Policy",
+    component: () => import("../views/Policy.vue"),
   },
   {
-    path:'/forgot-password',
-    name:'ForgotPassword',
-    component: () => import('../views/ForgotPassword.vue'),
+    path: "/forgot-password",
+    name: "ForgotPassword",
+    component: () => import("../views/ForgotPassword.vue"),
     beforeEnter: (to, from, next) => {
-      if(auth.currentUser){
-        if(auth.currentUser.emailVerified){
-          next('/')
+      if (auth.currentUser) {
+        if (auth.currentUser.emailVerified) {
+          next("/");
         }
       }
-      next()
-    }
+      next();
+    },
   },
   {
-    path:'/contact',
-    name:'Contact',
-    component: () => import('../views/Contact.vue')
+    path: "/contact",
+    name: "Contact",
+    component: () => import("../views/Contact.vue"),
   },
   {
-    path:'/faqs',
-    name:'FAQs',
-    component: () => import('../views/FAQs.vue')
+    path: "/faqs",
+    name: "FAQs",
+    component: () => import("../views/FAQs.vue"),
   },
   {
-    path:'/privacy-policy',
-    name:'PrivacyPolicy',
-    component: () => import('../views/PrivacyPolicy.vue')
+    path: "/privacy-policy",
+    name: "PrivacyPolicy",
+    component: () => import("../views/PrivacyPolicy.vue"),
   },
   {
-    path:'/wish-list',
-    name:'WishList',
-    component: () => import('../views/WishList.vue'),
+    path: "/wish-list",
+    name: "WishList",
+    component: () => import("../views/WishList.vue"),
     beforeEnter: (to, from, next) => {
-      if(!store.state.auth.user){
-        next('/')
+      if (!store.state.auth.user) {
+        next("/");
       }
-      next()
-    }
+      next();
+    },
   },
   {
-    path:'/dashboard',
-    name:'Dashboard',
-    component: () => import('../views/Dashboard.vue'),
+    path: "/dashboard",
+    name: "Dashboard",
+    component: () => import("../views/Dashboard.vue"),
     params: true,
     beforeEnter: (to, from, next) => {
-      if(!store.state.auth.user){
-        next('/')
+      if (!store.state.auth.user) {
+        next("/");
       }
-      next()
-    }
+      next();
+    },
   },
   {
-    path:'/order-details/:nbr',
-    name:'ShowDetailsOrder',
-    component: () => import('../views/ShowDetailsOrder.vue'),
+    path: "/order-details/:nbr",
+    name: "ShowDetailsOrder",
+    component: () => import("../views/ShowDetailsOrder.vue"),
     beforeEnter: (to, from, next) => {
-      if(!store.state.auth.user){
-        next('/')
+      if (!store.state.auth.user) {
+        next("/");
       }
-      next()
-    }
+      next();
+    },
   },
   {
-    path:'/orders',
-    name:'Orders',
-    component: () => import('../views/Orders.vue'),
+    path: "/orders",
+    name: "Orders",
+    component: () => import("../views/Orders.vue"),
     beforeEnter: (to, from, next) => {
-      if(!store.state.auth.user){
-        next('/')
+      if (!store.state.auth.user) {
+        next("/");
       }
-      next()
-    }
+      next();
+    },
   },
   {
-    path: '/payment-waiting',
-    name: 'PaymentWaiting',
-    component: () => import('../views/PaymentWaiting.vue'),
+    path: "/payment-waiting",
+    name: "PaymentWaiting",
+    component: () => import("../views/PaymentWaiting.vue"),
     beforeEnter: (to, from, next) => {
-      if(!localStorage.getItem('waiting')){
-        next('/')
+      if (!localStorage.getItem("waiting")) {
+        next("/");
       }
-      next()
-    }
+      next();
+    },
   },
-
-]
+];
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
   scrollBehavior() {
-    document.getElementById('app').scrollIntoView({ behavior: 'smooth' });
-  }
-})
+    document.getElementById("app").scrollIntoView({ behavior: "smooth" });
+  },
+});
 
-
-
-export default router
+export default router;

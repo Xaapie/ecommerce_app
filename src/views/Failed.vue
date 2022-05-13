@@ -42,7 +42,7 @@ export default {
     }),
   },
   methods: {
-    //we update the status of payment to Payment Failed when the payment is failed
+    //update the status of payment to Payment Failed when the payment is failed
     async getSpecifiedDoc(user_uid) {
       const q = query(
         collection(db, `users/${user_uid}/orders`),
@@ -71,7 +71,7 @@ export default {
       }, 1500);
     }
 
-    //we clear the cart after the payment is done
+    //clear the cart after the payment is done
     this.$store.dispatch("clearCart").then(() => {
       let user_uid = localStorage.getItem("user_uid");
       if (user_uid) {

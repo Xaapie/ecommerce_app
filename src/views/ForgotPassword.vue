@@ -99,7 +99,7 @@ export default {
         });
       }
     },
-    //To send email of reset password to the user
+    //send email to the user to reset password
     handleSubmit() {
       this.loading = true;
       if (this.email != "") {

@@ -148,8 +148,8 @@ export default {
         });
       } else if (type == "reset-password") {
         notification["error"]({
-          message: "PLease reset your password",
-          description: "",
+          message: "Account locked",
+          description: "Please reset your password",
         });
       }
     },

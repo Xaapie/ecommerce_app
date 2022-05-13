@@ -1,3 +1,5 @@
+//initialise root component into a element.
+//responsible for setting up plugins and 3rd party components to use in the app
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";

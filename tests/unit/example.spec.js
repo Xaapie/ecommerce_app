@@ -7,6 +7,7 @@ import { shallowMount, mount } from "@vue/test-utils";
 
 //5 unit tests done.
 
+//login page
 describe("Login", () => {
   test("Check Login form", () => {
     const wrapper = shallowMount(Login);
@@ -15,6 +16,7 @@ describe("Login", () => {
   });
 });
 
+//register page
 describe("Register", () => {
   test("Check Register form", () => {
     const wrapper = shallowMount(Register);
@@ -23,6 +25,7 @@ describe("Register", () => {
   });
 });
 
+//page not found
 describe("Not Found Page", () => {
   it("Check display of 404 page", () => {
     const wrapper = shallowMount(NotFound);
@@ -31,6 +34,7 @@ describe("Not Found Page", () => {
   });
 });
 
+//contact page
 describe("Contact Page", () => {
   it("Check display of contact page", () => {
     const wrapper = shallowMount(Contact);
@@ -39,6 +43,7 @@ describe("Contact Page", () => {
   });
 });
 
+//all products showing 
 describe("Shop Page", () => {
   test("Check display of all products in shop", () => {
     const wrapper = shallowMount(Shop);

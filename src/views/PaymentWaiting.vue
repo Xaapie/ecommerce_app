@@ -38,8 +38,8 @@ export default {
         "pk_test_51KnVADJ5z6e49EHtbjQIXRLoqs1c7ALa4YaSWdsPvFJk6xEDoEOJDPURTbxS7QEXLX2AUryXGSqKSG58p85X87td001fnNpxP1",
       loading: false,
       lineItems: [],
-      successURL: "http://localhost:8080/success",
-      cancelURL: "http://localhost:8080/failed",
+      successURL: "https://e-commerce-3ec83.web.app/success",
+      cancelURL: "https://e-commerce-3ec83.web.app/failed",
     };
   },
   mounted() {
