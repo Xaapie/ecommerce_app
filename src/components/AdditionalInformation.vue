@@ -4,19 +4,19 @@
       <div class="col-md-12">
         <h4>Specifications</h4>
         <ul>
-          <li v-for="(spec, index) in getInfo.specifications" :key="index">
+          <li v-for="(spec, index) in getInfo?.specifications" :key="index">
             {{ spec }}
           </li>
         </ul>
         <h4>Product Highlights</h4>
         <ul>
-          <li v-for="(spec, index) in getInfo.highlights" :key="index">
+          <li v-for="(spec, index) in getInfo?.highlights" :key="index">
             {{ spec }}
           </li>
         </ul>
         <h4>Kit Content</h4>
         <ul>
-          <li v-for="(spec, index) in getInfo.kit" :key="index">{{ spec }}</li>
+          <li v-for="(spec, index) in getInfo?.kit" :key="index">{{ spec }}</li>
         </ul>
         <p>
           Simple packing. Customary Packing from the factory, the packing is
