@@ -25,9 +25,7 @@ export default {
 };
 </script>
 <style>
-
-.video-area{
+.video-area {
   background-position: center;
 }
-
 </style>
