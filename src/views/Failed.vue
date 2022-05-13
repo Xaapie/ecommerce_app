@@ -58,7 +58,7 @@ export default {
         }).then(() => {
           localStorage.removeItem("user_uid");
           setTimeout(() => {
-            //this.$router.push("/");
+            this.$router.push("/");
           }, 5000);
         });
       });
