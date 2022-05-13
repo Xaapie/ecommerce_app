@@ -1,3 +1,2 @@
-export default{
-    
-}
+// contact mutations
+export default {};

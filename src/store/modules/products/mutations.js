@@ -1,5 +1,6 @@
-export default{
-    SET_PRODUCTS(state, data){
-        state.products = data;
-    }
-}
+// product mutations
+export default {
+  SET_PRODUCTS(state, data) {
+    state.products = data;
+  },
+};
